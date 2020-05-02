@@ -1,16 +1,42 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import * as utils from "../utils";
 import SinglePost from "./SinglePost";
 
-export default function PostList(props) {
-  const { postNumber } = props;
+export default function PostList() {
   const [posts] = useState(utils.postData());
+  let firstDiv = [];
+  let secondDiv = [];
+  let thirdDiv = [];
 
-  const post = useRef(posts[postNumber]);
+  for (let i = 0; i < 3; i++) {
+    firstDiv.push(posts[i])
+  }
+
+  for (let i = 3; i < 6; i++) {
+    secondDiv.push(posts[i])
+  }
+
+  for (let i = 6; i < 9; i++) {
+    thirdDiv.push(posts[i])
+  }
 
   return (
-    <div className="PostList">
-      <SinglePost post={post.current} />;
-    </div>
+    <div>
+      <div className="PostList1">
+        {firstDiv.map((post) => {
+          return <SinglePost post={post} />;
+        })}
+      </div>
+      <div className="PostList2">
+        {secondDiv.map((post) => {
+          return <SinglePost post={post} />;
+        })}
+      </div>
+      <div className="PostList3">
+        {thirdDiv.map((post) => {
+          return <SinglePost post={post} />;
+        })}
+      </div>
+      </div>
   );
 }
