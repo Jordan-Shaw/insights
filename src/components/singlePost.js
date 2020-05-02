@@ -2,11 +2,19 @@ import React from "react";
 
 export default function SinglePost(props) {
   const { title, imgSrc, href, text } = props.post;
+
   return (
     <div className="SinglePost">
-      <h4>{title}</h4>
+      <div className="postContentContainer">
+        <h4 className="title">
+          <span className="highlight">{title}</span>
+        </h4>
+
+        <a href={href} className="link">
+          {text}
+        </a>
+      </div>
       <img src={imgSrc} alt={title}></img>
-      <a href={href}>{text}</a>
     </div>
   );
 }
